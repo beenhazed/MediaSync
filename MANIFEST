@@ -1,0 +1,11 @@
+bin/mediasyncperl.pl
+t/mediasyncperl.t
+t/perlcritic.t
+t/pod.t
+AUTHORS
+ChangeLog
+COPYING
+Makefile.PL
+MANIFEST
+NEWS
+README
