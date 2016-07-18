@@ -1,0 +1,3 @@
+<config logconfigfile="log4perl.conf" debugfile="dbg/MediaSyncPerl.dbg" completeddirectory="completed/" >
+</config>
+

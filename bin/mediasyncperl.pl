@@ -1,12 +1,43 @@
 #!/usr/bin/env perl
 
 use 5.012;
+use XML::Simple qw(:strict);
+use Data::Dumper;
+use Time::localtime;
+use IPC::DirQueue;
+use DBD::SQLite;
+use Log::Log4perl;
+use threads;
 use warnings;
 
 our $VERSION = '0.1';
+our $packageId = "MediaSyncPerl";
 
-say 'Hello World!';
+# Steps for the code
+# 1. Read config
+# 2. Create DirQueue object
+# 3. Open processed files SQLite database
+# 4. Spawn thread, and loop on it
+# 5. Set timer for ftp client connect
+# 6. Start ftp client connection on timer end
+# 7. Retrieve list of files and directory from source "completeddirectory"
+# 8. Compare against processed files
+# 9. Check if files in completeddirectory has finished downloading and exist in plex/sonarr
+# 9. Queue new files to download, marking each file during transfer to have different extension
+# 10. Once file is downloaded, mark file as downloaded, but don't rename yet
+# 11. Once the entire directory is complete, rename files with new extensions
+# 12. Mark as renamed, and mark as processed
 
+my $config = XMLin(undef, ForceArray => 1, KeyAttr => []);
+# print Dumper($config);
+
+Log::Log4perl::init_and_watch($config->{logconfigfile},10);
+
+my $logger = Log::Log4perl->get_logger($packageId);
+
+
+
+exit(1);
 __END__
 
 =head1 NAME
