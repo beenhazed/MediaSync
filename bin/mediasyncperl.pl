@@ -28,11 +28,12 @@ our $packageId = "MediaSyncPerl";
 # 11. Once the entire directory is complete, rename files with new extensions
 # 12. Mark as renamed, and mark as processed
 
+# Read config
 my $config = XMLin(undef, ForceArray => 1, KeyAttr => []);
 # print Dumper($config);
 
+# Start logger
 Log::Log4perl::init_and_watch($config->{logconfigfile},10);
-
 my $logger = Log::Log4perl->get_logger($packageId);
 
 
